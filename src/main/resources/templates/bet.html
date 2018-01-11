@@ -1,0 +1,18 @@
+<!DOCTYPE html> 
+ <html> 
+ <head> 
+ <meta charset="UTF-8"> 
+ <title>Make Your Bet</title> 
+ </head> 
+ <body> 
+ 
+ 
+ <div>You have ${{game.chips.money}}</div> 
+ <form method="post" action="/bet"> 
+ 	<input required autofocus type="number" name="bet" min="5" placeholder="$5 minimum" max={{game.chips.money}}> 
+ 	<button>Place bet</button> 
+ </form> 
+ 
+ 
+ </body> 
+ </html> 

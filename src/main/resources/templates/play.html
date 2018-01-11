@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+ <html> 
+ <head> 
+ <meta charset="utf8"> 
+ <title>Play Your Hand</title> 
+ </head> 
+ <body> 
+ 
+ 
+ <h1>BLACKJACK</h1> 
+ 
+ 
+ <h2>Dealer Hand</h2> 
+ {{#game.dealer.hand.cards}} 
+ 	<div>{{ rank }} of {{ suit }}</div> 
+ {{/game.dealer.hand.cards}} 
+ {{#game.dealer.hidden}} 
+ {{.}}  
+ {{/game.dealer.hidden}} 
+ <br> 
+ Dealer Score = {{game.dealer.hand.total}} 
+ <br> 
+ {{#game.dealer.hand.busted}} 
+ {{.}}  
+ 
+ 
+ {{/game.dealer.hand.busted}} 
+ 
+ 
+ <br> 
+ 
+ <h2>Player Hand</h2> 
+
+ {{#game.player.hand.cards}} 
+ 	<div>{{ rank }} of {{ suit }}</div> 
+ {{/game.player.hand.cards}} 
+ You Score = {{game.player.hand.total}} 
+ 
+ 
+ <br> 
+ {{#game.player.hand.busted}} 
+ {{.}}  
+ 
+ 
+ {{/game.player.hand.busted}} 
+ 
+ 
+ {{#game.player.hand.isNotBusted}} 
+   <form method="post" action="/hit"> 
+ 	<button>Hit me</button> 
+   </form> 
+ {{/game.player.hand.isNotBusted}} 
+ 
+ 
+ {{#game.player.hand.removeStandButton}} 
+  <form method="post" action="/stand"> 
+ 	<button>Stand</button> 
+  </form> 
+ {{/game.player.hand.removeStandButton}} 
+ 
+ 
+{{#game.player.hand.isBusted}} 
+ You lost the hand, but you can bet again! 
+  <form method="post" action="/reBet"> 
+ 	<input autofocus type="number" name="bet" min="5" placeholder="$5 minimum" max={{game.chips.money}} required> 
+ 	<button>Place bet</button> 
+  </form> 
+ {{/game.player.hand.isBusted}} 
+
+ <br> 
+ ${{game.playerBet}} is your bet. 
+ <br> 
+ Value of Chips ${{game.chips.money}} 
+ <br>  
+ 
+ <br><br><br> 
+<!--  {{#game.deck.deck}}  -->
+<!--  	{{rank}} of {{suit}}  -->
+<!--   {{/game.deck.deck}}  -->
+</body> 
+</html> 

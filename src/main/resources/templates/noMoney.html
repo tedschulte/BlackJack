@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+ <html> 
+ <head> 
+ <meta charset="utf8"> 
+ <title>Out of Money</title> 
+ </head> 
+ <body> 
+ So sorry, but you have lost the hand and have no more chips left.  But you can start over. 
+ <form method="get" action="/"> 
+ <button>Start Over</button> 
+ </form> 
+
+ 
+ <h2>Dealer Hand</h2> 
+ {{#game.dealer.hand.cards}} 
+ 	<div>{{ rank }} of {{ suit }}</div> 
+ {{/game.dealer.hand.cards}} 
+ <br> 
+ Dealer Score = {{game.dealer.hand.total}} 
+ <h2>Player Hand</h2> 
+ {{#game.player.hand.cards}} 
+ 	<div>{{ rank }} of {{ suit }}</div> 
+ {{/game.player.hand.cards}} 
+ You Score = {{game.player.hand.total}} 
+</body> 
+</html> 
